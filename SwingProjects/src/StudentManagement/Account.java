@@ -46,6 +46,7 @@ public class Account extends JFrame {
 	PreparedStatement ps;
 	ResultSet rs;
 	private JTextField textField_9;
+	private JTextField textField_10;
 	/**
 	 * Launch the application.
 	 */
@@ -293,7 +294,62 @@ public class Account extends JFrame {
 		textField_8.setBounds(777, 451, 157, 32);
 		frmBankmanagement.getContentPane().add(textField_8);
 		
+		JLabel lblNewLabel_2 = new JLabel("Thank You for Using Our Service");
+		lblNewLabel_2.setBackground(new Color(240, 240, 240));
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_2.setForeground(Color.RED);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
+		lblNewLabel_2.setBounds(234, 675, 545, 16);
+		frmBankmanagement.getContentPane().add(lblNewLabel_2);
+		
+		JLabel lblBalance = new JLabel("Balance:");
+		lblBalance.setHorizontalAlignment(SwingConstants.CENTER);
+		lblBalance.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		lblBalance.setBounds(628, 523, 118, 32);
+		frmBankmanagement.getContentPane().add(lblBalance);
+		
+		textField_9 = new JTextField();
+		textField_9.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		textField_9.setColumns(10);
+		textField_9.setBounds(777, 520, 157, 32);
+		frmBankmanagement.getContentPane().add(textField_9);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(SystemColor.activeCaption);
+		panel.setBorder(new TitledBorder(new LineBorder(new Color(0, 255, 255), 4), "NewAccount", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(255, 0, 0)));
+		panel.setBounds(43, 38, 1004, 669);
+		frmBankmanagement.getContentPane().add(panel);
+		panel.setLayout(null);
+		
+		JButton btnClear = new JButton("Clear");
+		btnClear.setBounds(818, 567, 63, 25);
+		panel.add(btnClear);
+		
+		JLabel lblNewLabel = new JLabel("iBanking");
+		lblNewLabel.setBounds(120, 0, 654, 128);
+		panel.add(lblNewLabel);
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 48));
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.setBounds(677, 567, 97, 25);
+		panel.add(btnBack);
+		
 		JButton btnNewButton = new JButton("Create");
+		btnNewButton.setBounds(568, 567, 97, 25);
+		panel.add(btnNewButton);
+		
+		JLabel lblEmail = new JLabel("Email:");
+		lblEmail.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEmail.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		lblEmail.setBounds(143, 552, 118, 32);
+		panel.add(lblEmail);
+		
+		textField_10 = new JTextField();
+		textField_10.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		textField_10.setColumns(10);
+		textField_10.setBounds(318, 552, 157, 32);
+		panel.add(textField_10);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			String sql="insert into Account(Acc,Name,Pin,DOB,Mic,Acc_Type,Gender,Mob,Address,Secq,SecA,Balance) values(?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -326,10 +382,6 @@ public class Account extends JFrame {
 		}
 			}
 		});
-		btnNewButton.setBounds(258, 599, 97, 25);
-		frmBankmanagement.getContentPane().add(btnNewButton);
-		
-		JButton btnBack = new JButton("Back");
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -337,10 +389,6 @@ public class Account extends JFrame {
 				ld.setVisible(true);
 			}
 		});
-		btnBack.setBounds(422, 599, 97, 25);
-		frmBankmanagement.getContentPane().add(btnBack);
-		
-		JButton btnClear = new JButton("Clear");
 		btnClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				textField.setText("");
@@ -354,39 +402,5 @@ public class Account extends JFrame {
 				textField_8.setText("");
 			}
 		});
-		btnClear.setBounds(562, 599, 97, 25);
-		frmBankmanagement.getContentPane().add(btnClear);
-		
-		JLabel lblNewLabel_2 = new JLabel("Thank You for Using Our Service");
-		lblNewLabel_2.setBackground(new Color(240, 240, 240));
-		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_2.setForeground(Color.RED);
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
-		lblNewLabel_2.setBounds(234, 675, 545, 16);
-		frmBankmanagement.getContentPane().add(lblNewLabel_2);
-		
-		JLabel lblNewLabel = new JLabel("iBanking");
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 48));
-		lblNewLabel.setBounds(163, 33, 654, 128);
-		frmBankmanagement.getContentPane().add(lblNewLabel);
-		
-		JLabel lblBalance = new JLabel("Balance:");
-		lblBalance.setHorizontalAlignment(SwingConstants.CENTER);
-		lblBalance.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		lblBalance.setBounds(628, 523, 118, 32);
-		frmBankmanagement.getContentPane().add(lblBalance);
-		
-		textField_9 = new JTextField();
-		textField_9.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		textField_9.setColumns(10);
-		textField_9.setBounds(777, 520, 157, 32);
-		frmBankmanagement.getContentPane().add(textField_9);
-		
-		JPanel panel = new JPanel();
-		panel.setBackground(SystemColor.activeCaption);
-		panel.setBorder(new TitledBorder(new LineBorder(new Color(0, 255, 255), 4), "NewAccount", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(255, 0, 0)));
-		panel.setBounds(43, 38, 1004, 669);
-		frmBankmanagement.getContentPane().add(panel);
 	}
 }

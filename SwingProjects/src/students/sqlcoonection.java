@@ -1,4 +1,6 @@
-package StudentManagement;
+package students;
+
+//package StudentManagement;
 import java.sql.*;
 import javax.swing.*;
 public class sqlcoonection {
@@ -8,7 +10,7 @@ public static Connection making()
 {
 	try {
 		Class.forName("org.sqlite.JDBC");
-	Connection	conn=DriverManager.getConnection("jdbc:sqlite:E:\\New folder\\newDatabase.sqlite");
+	Connection	conn=DriverManager.getConnection("jdbc:sqlite:E:\\New folder (2)\\Students.sqlite");
 	//JOptionPane.showMessageDialog(null,"Successful");
 	return conn;
 		

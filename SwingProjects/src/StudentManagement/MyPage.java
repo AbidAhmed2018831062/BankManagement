@@ -29,7 +29,7 @@ import javax.swing.JScrollBar;
 import java.util.*;
 import java.awt.Toolkit;
 public class MyPage extends JFrame{
-
+ String wer=" ";
 	private JFrame frame;
      private Connection conn;
      private PreparedStatement ps;
@@ -67,6 +67,7 @@ public class MyPage extends JFrame{
      private JPasswordField passwordField;
      private JPasswordField passwordField_1;
      private JPasswordField passwordField_2;
+     private JTextField textField_29;
      
 public void deductBalance() {
 	int add1=Integer.parseInt(textField_16.getText());
@@ -162,6 +163,10 @@ public void addBalance()
 		initialize();
 		conn=sqlcoonection.making();
 	}
+	public void sendEmail(String toEmail)
+	{
+		SendingEmail4 ob=new SendingEmail4(wer,toEmail);
+	}
 
 	/**
 	 * Initialize the contents of the frame.
@@ -183,12 +188,6 @@ public void addBalance()
 		lblNewLabel.setBounds(94, 26, 244, 100);
 		frame.getContentPane().add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("User:");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(583, 62, 116, 36);
-		frame.getContentPane().add(lblNewLabel_1);
-		
 		JPanel panel_9 = new JPanel();
 		panel_9.setBackground(SystemColor.activeCaption);
 		panel_9.setBorder(new TitledBorder(new LineBorder(new Color(0, 255, 255), 4), "Everything", TitledBorder.LEADING, TitledBorder.TOP, null, Color.RED));
@@ -196,7 +195,161 @@ public void addBalance()
 		frame.getContentPane().add(panel_9);
 		panel_9.setLayout(null);
 		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(38, 150, 900, 550);
+		panel_9.add(tabbedPane);
+		tabbedPane.setBackground(SystemColor.activeCaption);
+		
+		JPanel panel = new JPanel();
+		tabbedPane.addTab("Profile", null, panel, null);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel_2 = new JLabel("Name");
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		lblNewLabel_2.setBounds(30, 90, 80, 31);
+		panel.add(lblNewLabel_2);
+		
+		JPanel panel_10 = new JPanel();
+		panel_10.setBounds(455, 8, 10, 10);
+		panel.add(panel_10);
+		
+		JLabel lblDob = new JLabel("DOB");
+		lblDob.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		lblDob.setBounds(30, 134, 80, 31);
+		panel.add(lblDob);
+		
+		JLabel lblAddress = new JLabel("Address");
+		lblAddress.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		lblAddress.setBounds(30, 184, 93, 31);
+		panel.add(lblAddress);
+		
+		JLabel lblGender = new JLabel("Gender");
+		lblGender.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		lblGender.setBounds(30, 228, 80, 31);
+		panel.add(lblGender);
+		
+		textField = new JTextField();
+		textField.setEditable(false);
+		textField.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		textField.setBounds(146, 84, 196, 31);
+		panel.add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		textField_1.setEditable(false);
+		textField_1.setColumns(10);
+		textField_1.setBounds(146, 134, 196, 31);
+		panel.add(textField_1);
+		
+		textField_2 = new JTextField();
+		textField_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		textField_2.setEditable(false);
+		textField_2.setColumns(10);
+		textField_2.setBounds(146, 184, 196, 31);
+		panel.add(textField_2);
+		
+		textField_3 = new JTextField();
+		textField_3.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		textField_3.setEditable(false);
+		textField_3.setColumns(10);
+		textField_3.setBounds(146, 228, 196, 31);
+		panel.add(textField_3);
+		
+		textField_4 = new JTextField();
+		textField_4.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		textField_4.setEditable(false);
+		textField_4.setColumns(10);
+		textField_4.setBounds(687, 84, 196, 31);
+		panel.add(textField_4);
+		
+		textField_5 = new JTextField();
+		textField_5.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		textField_5.setEditable(false);
+		textField_5.setColumns(10);
+		textField_5.setBounds(687, 134, 196, 31);
+		panel.add(textField_5);
+		
+		textField_6 = new JTextField();
+		textField_6.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		textField_6.setEditable(false);
+		textField_6.setColumns(10);
+		textField_6.setBounds(687, 184, 196, 31);
+		panel.add(textField_6);
+		
+		textField_7 = new JTextField();
+		textField_7.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		textField_7.setEditable(false);
+		textField_7.setColumns(10);
+		textField_7.setBounds(687, 228, 196, 31);
+		panel.add(textField_7);
+		
+		JLabel lblAccountNo = new JLabel("Account No");
+		lblAccountNo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		lblAccountNo.setBounds(488, 90, 149, 31);
+		panel.add(lblAccountNo);
+		
+		JLabel lblAccountType = new JLabel("Account Type");
+		lblAccountType.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		lblAccountType.setBounds(486, 134, 164, 31);
+		panel.add(lblAccountType);
+		
+		JLabel lblMobile = new JLabel("Mobile");
+		lblMobile.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		lblMobile.setBounds(517, 184, 80, 31);
+		panel.add(lblMobile);
+		
+		JLabel lblSecQ = new JLabel("Sec Q");
+		lblSecQ.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		lblSecQ.setBounds(517, 228, 80, 31);
+		panel.add(lblSecQ);
+		
+		JButton btnNewButton = new JButton("Edit");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			///	textField.setEditable(true);
+			//	textField_1.setEditable(true);
+				textField_2.setEditable(true);
+				textField_3.setEditable(true);
+				textField_29.setEditable(true);
+				//textField_4.setEditable(true);
+				textField_5.setEditable(true);
+				textField_6.setEditable(true);
+				textField_7.setEditable(true);
+				
+			}
+		});
+		btnNewButton.setBounds(563, 335, 97, 25);
+		panel.add(btnNewButton);
+		
+		JButton btnSave = new JButton("Save");
+		btnSave.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			String add1=textField_2.getText();
+			String add2=textField_3.getText();
+			String add3=textField_6.getText();
+			String add4=textField_7.getText();
+			String add5=textField_4.getText();
+			String add6=textField_29.getText();
+			String sql="update Account set Address='"+add1+"',Gender='"+add2+"',Mob='"+add3+"',Secq='"+add4+"',email='"+add6+"'where Acc='"+add5+"'";
+				try {
+					ps=conn.prepareStatement(sql);
+					ps.execute();
+					JOptionPane.showMessageDialog(null,"Profile Updated");
+					
+					}catch(Exception ae)
+				{
+						JOptionPane.showMessageDialog(null,ae);
+						
+				}
+			}
+		});
+		btnSave.setBounds(719, 335, 97, 25);
+		panel.add(btnSave);
+		
 		textField_8 = new JTextField();
+		textField_8.setBounds(371, 13, 200, 32);
+		panel.add(textField_8);
 		textField_8.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String sql="select * from Account where Acc=?";
@@ -221,6 +374,9 @@ public void addBalance()
 					textField_6.setText(add7);
 					String add8=rs.getString("Secq");
 					textField_7.setText(add8);
+					String add9=rs.getString("email");
+					textField_29.setText(add9);
+					
 					}
 					else
 					{
@@ -232,159 +388,25 @@ public void addBalance()
 				}
 			}
 		});
-		textField_8.setBounds(684, 54, 200, 32);
-		panel_9.add(textField_8);
 		textField_8.setColumns(10);
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(38, 150, 900, 550);
-		panel_9.add(tabbedPane);
-		tabbedPane.setBackground(SystemColor.activeCaption);
+		JLabel lblNewLabel_1 = new JLabel("User:");
+		lblNewLabel_1.setBounds(213, 13, 116, 36);
+		panel.add(lblNewLabel_1);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JPanel panel = new JPanel();
-		tabbedPane.addTab("Profile", null, panel, null);
-		panel.setLayout(null);
+		JLabel lblEmail = new JLabel("Email:");
+		lblEmail.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		lblEmail.setBounds(30, 288, 80, 31);
+		panel.add(lblEmail);
 		
-		JLabel lblNewLabel_2 = new JLabel("Name");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		lblNewLabel_2.setBounds(30, 37, 80, 31);
-		panel.add(lblNewLabel_2);
-		
-		JPanel panel_10 = new JPanel();
-		panel_10.setBounds(455, 8, 10, 10);
-		panel.add(panel_10);
-		
-		JLabel lblDob = new JLabel("DOB");
-		lblDob.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		lblDob.setBounds(30, 84, 80, 31);
-		panel.add(lblDob);
-		
-		JLabel lblAddress = new JLabel("Address");
-		lblAddress.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		lblAddress.setBounds(30, 134, 93, 31);
-		panel.add(lblAddress);
-		
-		JLabel lblGender = new JLabel("Gender");
-		lblGender.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		lblGender.setBounds(30, 190, 80, 31);
-		panel.add(lblGender);
-		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		textField.setBounds(146, 37, 196, 31);
-		panel.add(textField);
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		textField_1.setEditable(false);
-		textField_1.setColumns(10);
-		textField_1.setBounds(146, 92, 196, 31);
-		panel.add(textField_1);
-		
-		textField_2 = new JTextField();
-		textField_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		textField_2.setEditable(false);
-		textField_2.setColumns(10);
-		textField_2.setBounds(146, 142, 196, 31);
-		panel.add(textField_2);
-		
-		textField_3 = new JTextField();
-		textField_3.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		textField_3.setEditable(false);
-		textField_3.setColumns(10);
-		textField_3.setBounds(146, 198, 196, 31);
-		panel.add(textField_3);
-		
-		textField_4 = new JTextField();
-		textField_4.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		textField_4.setEditable(false);
-		textField_4.setColumns(10);
-		textField_4.setBounds(687, 37, 196, 31);
-		panel.add(textField_4);
-		
-		textField_5 = new JTextField();
-		textField_5.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		textField_5.setEditable(false);
-		textField_5.setColumns(10);
-		textField_5.setBounds(687, 92, 196, 31);
-		panel.add(textField_5);
-		
-		textField_6 = new JTextField();
-		textField_6.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		textField_6.setEditable(false);
-		textField_6.setColumns(10);
-		textField_6.setBounds(687, 142, 196, 31);
-		panel.add(textField_6);
-		
-		textField_7 = new JTextField();
-		textField_7.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		textField_7.setEditable(false);
-		textField_7.setColumns(10);
-		textField_7.setBounds(687, 190, 196, 31);
-		panel.add(textField_7);
-		
-		JLabel lblAccountNo = new JLabel("Account No");
-		lblAccountNo.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		lblAccountNo.setBounds(488, 37, 149, 31);
-		panel.add(lblAccountNo);
-		
-		JLabel lblAccountType = new JLabel("Account Type");
-		lblAccountType.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		lblAccountType.setBounds(476, 84, 164, 31);
-		panel.add(lblAccountType);
-		
-		JLabel lblMobile = new JLabel("Mobile");
-		lblMobile.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		lblMobile.setBounds(517, 134, 80, 31);
-		panel.add(lblMobile);
-		
-		JLabel lblSecQ = new JLabel("Sec Q");
-		lblSecQ.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		lblSecQ.setBounds(517, 190, 80, 31);
-		panel.add(lblSecQ);
-		
-		JButton btnNewButton = new JButton("Edit");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			///	textField.setEditable(true);
-			//	textField_1.setEditable(true);
-				textField_2.setEditable(true);
-				textField_3.setEditable(true);
-				//textField_4.setEditable(true);
-				textField_5.setEditable(true);
-				textField_6.setEditable(true);
-				textField_7.setEditable(true);
-				
-			}
-		});
-		btnNewButton.setBounds(517, 297, 97, 25);
-		panel.add(btnNewButton);
-		
-		JButton btnSave = new JButton("Save");
-		btnSave.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			String add1=textField_2.getText();
-			String add2=textField_3.getText();
-			String add3=textField_6.getText();
-			String add4=textField_7.getText();
-			String add5=textField_4.getText();
-			String sql="update Account set Address='"+add1+"',Gender='"+add2+"',Mob='"+add3+"',Secq='"+add4+"'where Acc='"+add5+"'";
-				try {
-					ps=conn.prepareStatement(sql);
-					ps.execute();
-					JOptionPane.showMessageDialog(null,"Profile Updated");
-					
-					}catch(Exception ae)
-				{
-						JOptionPane.showMessageDialog(null,ae);
-						
-				}
-			}
-		});
-		btnSave.setBounds(633, 297, 97, 25);
-		panel.add(btnSave);
+		textField_29 = new JTextField();
+		textField_29.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		textField_29.setEditable(false);
+		textField_29.setColumns(10);
+		textField_29.setBounds(146, 288, 196, 31);
+		panel.add(textField_29);
 		
 		JPanel panel_1 = new JPanel();
 		tabbedPane.addTab("Deposit", null, panel_1, null);
@@ -460,6 +482,7 @@ public void addBalance()
 					String add2=rs.getString("Balance");
 					textField_11.setText(add2);
 					textField_12.setEditable(true);
+					wer=rs.getString("email");
 					}
 					else
 					{
@@ -504,6 +527,9 @@ public void addBalance()
 						ps.execute();
 					  String j=textField_12.getText();
 						updateTransaction("\nYou have deposited "+j+"taka to your account",textField_9.getText());
+						String toEmail="\nYou have deposited "+j+"taka to your account";
+						
+						sendEmail(toEmail);
 						textField_9.setText("");
 						textField_10.setText("");
 						textField_11.setText("");
@@ -518,172 +544,6 @@ public void addBalance()
 		});
 		btnDeposut.setBounds(569, 405, 118, 25);
 		panel_1.add(btnDeposut);
-		
-		JPanel panel_2 = new JPanel();
-		tabbedPane.addTab("Transfer", null, panel_2, null);
-		panel_2.setLayout(null);
-		
-		JLabel label = new JLabel("Acc No");
-		label.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		label.setBounds(196, 67, 80, 31);
-		panel_2.add(label);
-		
-		JLabel lblName_1 = new JLabel("Name");
-		lblName_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		lblName_1.setBounds(196, 126, 80, 31);
-		panel_2.add(lblName_1);
-		
-		JLabel lblTotalAmount_2 = new JLabel("Total Amount");
-		lblTotalAmount_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		lblTotalAmount_2.setBounds(121, 192, 166, 31);
-		panel_2.add(lblTotalAmount_2);
-		
-		JLabel lblTransferAmount = new JLabel("Transfer Amount");
-		lblTransferAmount.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		lblTransferAmount.setBounds(84, 256, 191, 31);
-		panel_2.add(lblTransferAmount);
-		
-		JLabel lblTotalAmount_1 = new JLabel("Total Amount");
-		lblTotalAmount_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		lblTotalAmount_1.setBounds(110, 317, 166, 31);
-		panel_2.add(lblTotalAmount_1);
-		
-		JLabel lblCreditAccount = new JLabel("Credit Account");
-		lblCreditAccount.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		lblCreditAccount.setBounds(98, 380, 178, 31);
-		panel_2.add(lblCreditAccount);
-		
-		textField_14 = new JTextField();
-		textField_14.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		textField_14.setColumns(10);
-		textField_14.setBounds(306, 67, 196, 31);
-		panel_2.add(textField_14);
-		
-		textField_15 = new JTextField();
-		textField_15.setEditable(false);
-		textField_15.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		textField_15.setColumns(10);
-		textField_15.setBounds(306, 134, 196, 31);
-		panel_2.add(textField_15);
-		
-		textField_16 = new JTextField();
-		textField_16.setEditable(false);
-		textField_16.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		textField_16.setColumns(10);
-		textField_16.setBounds(306, 200, 196, 31);
-		panel_2.add(textField_16);
-		
-		textField_17 = new JTextField();
-		textField_17.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			int min=Integer.parseInt(textField_16.getText());
-			int max=Integer.parseInt(textField_17.getText());
-			if(max>min)
-			{
-				JOptionPane.showMessageDialog(null,"You don't have sufficient balance");
-				textField_17.setText("");
-				textField_19.setEditable(false);
-				
-			}
-			else {
-				int r=min-max;
-				textField_18.setText(""+r);
-				textField_19.setEditable(true);
-			}
-			}
-		});
-		textField_17.setEditable(false);
-		textField_17.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		textField_17.setColumns(10);
-		textField_17.setBounds(306, 264, 196, 31);
-		panel_2.add(textField_17);
-		
-		textField_18 = new JTextField();
-		textField_18.setEditable(false);
-		textField_18.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		textField_18.setColumns(10);
-		textField_18.setBounds(306, 325, 196, 31);
-		panel_2.add(textField_18);
-		
-		textField_19 = new JTextField();
-		textField_19.setEditable(false);
-		textField_19.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
-		textField_19.setColumns(10);
-		textField_19.setBounds(306, 388, 196, 31);
-		panel_2.add(textField_19);
-		textField_19.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-		String sql2="select*from Account where Acc=?";
-		
-		try {
-			ps=conn.prepareStatement(sql2);
-			ps.setString(1,textField_19.getText());
-			rs=ps.executeQuery();
-			if(rs.next())
-			{
-				amount=rs.getInt("Balance");
-			}
-			else
-			{
-				JOptionPane.showMessageDialog(null,"Enter Correct Account Number");
-			}
-		}
-		catch(Exception ae)
-		{
-			
-		}
-			}});
-		
-		JButton button = new JButton("Search Acc");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String sql="select * from Account where Acc=?";
-				try {
-					ps=conn.prepareStatement(sql);
-					ps.setString(1, textField_14.getText());
-					rs=ps.executeQuery();
-					if(rs.next()) {
-					String add1=rs.getString("Name");
-					textField_15.setText(add1);
-					String add2=rs.getString("Balance");
-					textField_16.setText(add2);
-					textField_17.setEditable(true);
-					textField_19.setEditable(true);
-					}
-					else
-					{
-						JOptionPane.showMessageDialog(null,"Enter Correct Account Number");
-					}
-					}catch(Exception ae)
-				{
-						JOptionPane.showMessageDialog(null,ae);
-				}
-				
-						
-					}
-				});
-		button.setBounds(571, 67, 118, 25);
-		panel_2.add(button);
-		
-		JButton btnRansfer = new JButton("Transfer");
-		btnRansfer.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				deductBalance();
-				addBalance();
-		String s="\n"+"You have transfered "+textField_17.getText()+"taka to id= "+textField_19.getText()+" account";
-		 
-			updateTransaction(s,textField_14.getText());
-			textField_14.setText("");
-			textField_15.setText("");
-			textField_16.setText("");
-			textField_17.setText("");
-			textField_18.setText("");
-			textField_19.setText("");
-			}
-		});
-		btnRansfer.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
-		btnRansfer.setBounds(495, 455, 118, 25);
-		panel_2.add(btnRansfer);
 		
 		JPanel panel_3 = new JPanel();
 		tabbedPane.addTab("Withdraw", null, panel_3, null);
@@ -781,6 +641,7 @@ public void addBalance()
 							textField_22.setText(add2);
 							textField_23.setEditable(true);
 							textField_19.setEditable(true);
+							wer=rs.getString("email");
 							}
 							else
 							{
@@ -813,6 +674,7 @@ public void addBalance()
 					String s="\n"+"You have withdrawn "+textField_23.getText()+" taka from your account";
 					  JOptionPane.showMessageDialog(null, "Withdrawn Successful");
 						updateTransaction(s,textField_20.getText());
+						sendEmail(s);
 						textField_20.setText("");
 						textField_21.setText("");
 						textField_22.setText("");
@@ -1021,6 +883,174 @@ public void addBalance()
 		lblSylhet.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
 		lblSylhet.setBounds(717, 277, 147, 35);
 		panel_4.add(lblSylhet);
+		
+		JPanel panel_2 = new JPanel();
+		tabbedPane.addTab("Transfer", null, panel_2, null);
+		panel_2.setLayout(null);
+		
+		JLabel label = new JLabel("Acc No");
+		label.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		label.setBounds(196, 67, 80, 31);
+		panel_2.add(label);
+		
+		JLabel lblName_1 = new JLabel("Name");
+		lblName_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		lblName_1.setBounds(196, 126, 80, 31);
+		panel_2.add(lblName_1);
+		
+		JLabel lblTotalAmount_2 = new JLabel("Total Amount");
+		lblTotalAmount_2.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		lblTotalAmount_2.setBounds(121, 192, 166, 31);
+		panel_2.add(lblTotalAmount_2);
+		
+		JLabel lblTransferAmount = new JLabel("Transfer Amount");
+		lblTransferAmount.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		lblTransferAmount.setBounds(84, 256, 191, 31);
+		panel_2.add(lblTransferAmount);
+		
+		JLabel lblTotalAmount_1 = new JLabel("Total Amount");
+		lblTotalAmount_1.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		lblTotalAmount_1.setBounds(110, 317, 166, 31);
+		panel_2.add(lblTotalAmount_1);
+		
+		JLabel lblCreditAccount = new JLabel("Credit Account");
+		lblCreditAccount.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		lblCreditAccount.setBounds(98, 380, 178, 31);
+		panel_2.add(lblCreditAccount);
+		
+		textField_14 = new JTextField();
+		textField_14.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		textField_14.setColumns(10);
+		textField_14.setBounds(306, 67, 196, 31);
+		panel_2.add(textField_14);
+		
+		textField_15 = new JTextField();
+		textField_15.setEditable(false);
+		textField_15.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		textField_15.setColumns(10);
+		textField_15.setBounds(306, 134, 196, 31);
+		panel_2.add(textField_15);
+		
+		textField_16 = new JTextField();
+		textField_16.setEditable(false);
+		textField_16.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		textField_16.setColumns(10);
+		textField_16.setBounds(306, 200, 196, 31);
+		panel_2.add(textField_16);
+		
+		textField_17 = new JTextField();
+		textField_17.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			int min=Integer.parseInt(textField_16.getText());
+			int max=Integer.parseInt(textField_17.getText());
+			if(max>min)
+			{
+				JOptionPane.showMessageDialog(null,"You don't have sufficient balance");
+				textField_17.setText("");
+				textField_19.setEditable(false);
+				
+			}
+			else {
+				int r=min-max;
+				textField_18.setText(""+r);
+				textField_19.setEditable(true);
+			}
+			}
+		});
+		textField_17.setEditable(false);
+		textField_17.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		textField_17.setColumns(10);
+		textField_17.setBounds(306, 264, 196, 31);
+		panel_2.add(textField_17);
+		
+		textField_18 = new JTextField();
+		textField_18.setEditable(false);
+		textField_18.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		textField_18.setColumns(10);
+		textField_18.setBounds(306, 325, 196, 31);
+		panel_2.add(textField_18);
+		
+		textField_19 = new JTextField();
+		textField_19.setEditable(false);
+		textField_19.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 22));
+		textField_19.setColumns(10);
+		textField_19.setBounds(306, 388, 196, 31);
+		panel_2.add(textField_19);
+		textField_19.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+		String sql2="select*from Account where Acc=?";
+		
+		try {
+			ps=conn.prepareStatement(sql2);
+			ps.setString(1,textField_19.getText());
+			rs=ps.executeQuery();
+			if(rs.next())
+			{
+				amount=rs.getInt("Balance");
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null,"Enter Correct Account Number");
+			}
+		}
+		catch(Exception ae)
+		{
+			
+		}
+			}});
+		
+		JButton button = new JButton("Search Acc");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String sql="select * from Account where Acc=?";
+				try {
+					ps=conn.prepareStatement(sql);
+					ps.setString(1, textField_14.getText());
+					rs=ps.executeQuery();
+					if(rs.next()) {
+					String add1=rs.getString("Name");
+					textField_15.setText(add1);
+					String add2=rs.getString("Balance");
+					textField_16.setText(add2);
+					textField_17.setEditable(true);
+					textField_19.setEditable(true);
+					wer=rs.getString("email");
+					}
+					else
+					{
+						JOptionPane.showMessageDialog(null,"Enter Correct Account Number");
+					}
+					}catch(Exception ae)
+				{
+						JOptionPane.showMessageDialog(null,ae);
+				}
+				
+						
+					}
+				});
+		button.setBounds(571, 67, 118, 25);
+		panel_2.add(button);
+		
+		JButton btnRansfer = new JButton("Transfer");
+		btnRansfer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				deductBalance();
+				addBalance();
+		String s="\n"+"You have transfered "+textField_17.getText()+"taka to id= "+textField_19.getText()+" account";
+		 
+			updateTransaction(s,textField_14.getText());
+			sendEmail(s);
+			textField_14.setText("");
+			textField_15.setText("");
+			textField_16.setText("");
+			textField_17.setText("");
+			textField_18.setText("");
+			textField_19.setText("");
+			}
+		});
+		btnRansfer.setFont(new Font("Tahoma", Font.BOLD | Font.ITALIC, 18));
+		btnRansfer.setBounds(495, 455, 118, 25);
+		panel_2.add(btnRansfer);
 		
 		
 	}
